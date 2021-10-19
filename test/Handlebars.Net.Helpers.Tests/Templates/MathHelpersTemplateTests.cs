@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using FluentAssertions;
 using HandlebarsDotNet.Helpers.Enums;
@@ -15,6 +15,7 @@ namespace HandlebarsDotNet.Helpers.Tests.Templates
             _handlebarsContext = Handlebars.Create();
             _handlebarsContext.Configuration.FormatProvider = CultureInfo.InvariantCulture;
 
+            // HandlebarsHelpers.Register(_handlebarsContext, opt => { opt.CustomHelperPaths = new string[0]; });
             HandlebarsHelpers.Register(_handlebarsContext, Category.Math);
         }
 
