@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29911.84
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BA564CB5-1908-41F9-A32A-3535BBE0E8C6}"
 EndProject
@@ -11,18 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.Net.Helpers.Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{845A8FA6-E56E-4BB4-AD92-29093BB2CA09}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "examples\ConsoleApp\ConsoleApp.csproj", "{9FB96AFF-4346-4CFF-A85B-0B88AC1149A1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.Net.Helpers", "src\Handlebars.Net.Helpers\Handlebars.Net.Helpers.csproj", "{FD1CF989-3F17-4F38-A5F4-EDECC647D237}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01DFE66D-E850-4ADC-A0FC-A3A13B896CDA}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		azure-pipeline-ci.yml = azure-pipeline-ci.yml
 		azure-pipelines-nuget.yml = azure-pipelines-nuget.yml
-		CHANGELOG.md = CHANGELOG.md
 		Directory.Build.props = Directory.Build.props
-		GitHubReleaseNotes.txt = GitHubReleaseNotes.txt
 		README.md = README.md
+		ReleaseNotes.md = ReleaseNotes.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.Net.Helpers.XPath", "src\Handlebars.Net.Helpers.XPath\Handlebars.Net.Helpers.XPath.csproj", "{42D47A7E-EF66-477D-A524-45EEC130EA67}"
@@ -39,6 +37,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.Net.Helpers.Dyna
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.Net.Helpers.Humanizer", "src\Handlebars.Net.Helpers.Humanizer\Handlebars.Net.Helpers.Humanizer.csproj", "{181B9A96-5662-44AA-8685-E68E12631A55}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReleaseNotes", "ReleaseNotes", "{07D7B723-31B2-49CD-8B4A-C78434177BB1}"
+	ProjectSection(SolutionItems) = preProject
+		Generate-ReleaseNotes.bat = Generate-ReleaseNotes.bat
+		PackageReleaseNotes.template = PackageReleaseNotes.template
+		PackageReleaseNotes.txt = PackageReleaseNotes.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,10 +54,6 @@ Global
 		{AEEF0925-0931-41B5-A3C5-C6A215560EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEEF0925-0931-41B5-A3C5-C6A215560EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEEF0925-0931-41B5-A3C5-C6A215560EBC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FB96AFF-4346-4CFF-A85B-0B88AC1149A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FB96AFF-4346-4CFF-A85B-0B88AC1149A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FB96AFF-4346-4CFF-A85B-0B88AC1149A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FB96AFF-4346-4CFF-A85B-0B88AC1149A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD1CF989-3F17-4F38-A5F4-EDECC647D237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD1CF989-3F17-4F38-A5F4-EDECC647D237}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD1CF989-3F17-4F38-A5F4-EDECC647D237}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -91,7 +92,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AEEF0925-0931-41B5-A3C5-C6A215560EBC} = {A86EFFD3-A604-4591-B5CA-4E778CCFC081}
-		{9FB96AFF-4346-4CFF-A85B-0B88AC1149A1} = {845A8FA6-E56E-4BB4-AD92-29093BB2CA09}
 		{FD1CF989-3F17-4F38-A5F4-EDECC647D237} = {BA564CB5-1908-41F9-A32A-3535BBE0E8C6}
 		{42D47A7E-EF66-477D-A524-45EEC130EA67} = {BA564CB5-1908-41F9-A32A-3535BBE0E8C6}
 		{7CBD113C-A754-480B-B0D0-AA9DF734F612} = {BA564CB5-1908-41F9-A32A-3535BBE0E8C6}
@@ -100,6 +100,7 @@ Global
 		{181B9A96-5662-44AA-8685-E68E1263125A} = {BA564CB5-1908-41F9-A32A-3535BBE0E8C6}
 		{181B9A96-5662-BBAA-5678-BB8E1263125A} = {BA564CB5-1908-41F9-A32A-3535BBE0E8C6}
 		{181B9A96-5662-44AA-8685-E68E12631A55} = {BA564CB5-1908-41F9-A32A-3535BBE0E8C6}
+		{07D7B723-31B2-49CD-8B4A-C78434177BB1} = {01DFE66D-E850-4ADC-A0FC-A3A13B896CDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC1E6DF8-EC39-439B-ABF0-EE3786C5C0F6}

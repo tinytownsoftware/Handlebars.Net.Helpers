@@ -1,0 +1,4 @@
+# 2.2.1 (10 July 2021)
+- #39 XPathHelper : Remove 'xml version' from XML document [bug]
+
+The full release notes can be found here: https://github.com/Handlebars-Net/Handlebars.Net.Helpers/blob/main/ReleaseNotes.md

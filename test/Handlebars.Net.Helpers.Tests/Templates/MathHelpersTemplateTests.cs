@@ -34,6 +34,22 @@ namespace HandlebarsDotNet.Helpers.Tests.Templates
         }
 
         [Theory]
+        [InlineData("{{[Math.Divide] 4 4}}", "1")]
+        [InlineData("{{[Math.Divide] 4 5}}", "0.8")]
+        [InlineData("{{[Math.Divide] -1 -0.5}}", "2")]
+        public void Divide(string template, string expected)
+        {
+            // Arrange
+            var action = _handlebarsContext.Compile(template);
+
+            // Act
+            var result = action(null);
+
+            // Assert
+            result.Should().StartWith(expected);
+        }
+
+        [Theory]
         [InlineData("{{[Math.LessThan] 2 1}}", "False")]
         [InlineData("{{[Math.LessThan] 1 2}}", "True")]
         [InlineData("{{[Math.LessThan] 2.2 3.1}}", "True")]
